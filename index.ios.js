@@ -16,7 +16,7 @@ import SearchPage from './SearchPage';
 class PropertyFinder extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
           <SearchPage />
       </View>
     );
