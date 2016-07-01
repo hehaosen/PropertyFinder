@@ -11,6 +11,19 @@ import {
 } from 'react-native';
 
 export default class SearchPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchString: 'london'
+        };
+    }
+    onSearchTextChanged(event) {
+        console.log('onSearchTextChanged');
+        this.setState({ searchString: event.nativeEvent.text });
+        console.log(this.state.searchString);
+    }
+
+
     render() {
         return (
             <View style={styles.container}>
@@ -18,21 +31,25 @@ export default class SearchPage extends Component {
                     搜索你中意的房子!
                 </Text>
                 <Text style = {styles.description}>
-                    可以搜索地名,邮编或者你附近的地方
+                    可以搜索地名,邮编或者选择本地信息
                 </Text>
-                <View style={styles.flowRight}>
+                <View style = {styles.flowRight}>
                     <TextInput
-                        style={styles.searchInput}
-                        placeholder='Search via name or postcode'/>
+                        style = {styles.searchInput}
+                        value={this.state.searchString}
+                        onChange={this.onSearchTextChanged.bind(this)}
+                        placeholder = '搜索地名或者邮编'/>
                     <TouchableHighlight style={styles.button}
                                         underlayColor='#99d9f4'>
-                        <Text style={styles.buttonText}>Go</Text>
+                        <Text style = {styles.buttonText}>搜索</Text>
                     </TouchableHighlight>
                 </View>
-                <TouchableHighlight style={styles.button}
+                <TouchableHighlight style = {styles.button}
                                     underlayColor='#99d9f4'>
-                    <Text style={styles.buttonText}>Location</Text>
+                    <Text style = {styles.buttonText}>本地信息</Text>
                 </TouchableHighlight>
+                <Image source = {require('./src/house.png')}
+                               style={styles.image}/>
             </View>
         );
     }
@@ -86,6 +103,7 @@ const styles = StyleSheet.create({
         color: '#48BBEC',
     },
     image: {
+        resizeMode: Image.resizeMode.contain,
         width: 217,
         height: 138
     }
