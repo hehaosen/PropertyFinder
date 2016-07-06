@@ -10,6 +10,8 @@ import {
     TouchableHighlight,
     ActivityIndicator,
 } from 'react-native';
+var SearchResults = require('./SearchResults');
+
 function urlForQueryAndPage(key, value, pageNumber) {
     var data = {
         country: 'uk',
@@ -26,7 +28,8 @@ function urlForQueryAndPage(key, value, pageNumber) {
         .join('&');
 
     return 'http://api.nestoria.co.uk/api?' + querystring;
-};
+}
+
 export default class SearchPage extends Component {
     constructor(props) {
         super(props);
