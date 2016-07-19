@@ -10,7 +10,8 @@ import {
     TouchableHighlight,
     ActivityIndicator,
 } from 'react-native';
-var SearchResults = require('./SearchResults');
+
+import SearchResults from './SearchResults';
 
 function urlForQueryAndPage(key, value, pageNumber) {
     var data = {
@@ -96,12 +97,6 @@ export default class SearchPage extends Component {
                         value={this.state.searchString}
                         onChange={this.onSearchTextChanged.bind(this)}
                         placeholder = '搜索地名或者邮编'/>
-                    <TouchableHighlight style={styles.button}
-                                        underlayColor='#99d9f4'
-                                        onPress={this.onSearchPressed.bind(this)}
-                    >
-                        <Text style = {styles.buttonText}>搜索</Text>
-                    </TouchableHighlight>
                 </View>
                 <TouchableHighlight style = {styles.button}
                                     underlayColor='#99d9f4'>
@@ -165,7 +160,9 @@ const styles = StyleSheet.create({
         color: '#48BBEC',
     },
     image: {
+/*
         resizeMode: Image.resizeMode.contain,
+*/
         width: 217,
         height: 138
     }
